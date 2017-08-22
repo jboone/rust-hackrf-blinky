@@ -1,0 +1,30 @@
+[package]
+authors = [
+  "Jared Boone <jared@sharebrained.com>",
+]
+categories = ["embedded", "hackrf", "sdr", "no-std"]
+description = "Blink the LEDs on the HackRF One software-defined radio"
+keywords = ["hackrf", "arm", "cortex-m"]
+license = "MIT OR Apache-2.0"
+name = "hackrf-blinky"
+repository = "https://github.com/jboone/hackrf-blinky"
+version = "0.1.0"
+
+[dependencies]
+cortex-m-rtfm = "0.2.1"
+
+[dependencies.cortex-m-rt]
+features = ["abort-on-panic"]
+version = "0.3.0"
+
+[dependencies.lpc43xx]
+features = ["rt"]
+version = "0.1.0"
+
+[patch.crates-io]
+# lpc43xx = { path = "../lpc43xx" }
+lpc43xx = { git = "https://github.com/jboone/rust-lpc43xx" }
+
+[profile.release]
+debug = true
+lto = true
