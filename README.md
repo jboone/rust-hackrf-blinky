@@ -18,14 +18,14 @@ You can strip the ELF down to just the binary portion like this:
 arm-none-eabi-objcopy -O binary target/thumbv7em-none-eabihf/release/hackrf-blinky hackrf-blinky.bin
 ```
 
-This can then be programmed onto your HackRF by entering DFU mode and executing these two commands:
+This binary file can then be programmed onto your HackRF by entering DFU mode. You will need the HackRF DFU firmware (hackrf_one_usb.dfu) from the most recent HackRF release. To enter DFU mode hold down the DFU button on the HackRF. Then press and release the reset button. Then release the DFU button. You're now in DFU mode and can execute these two commands to flash the binary into the HackRF SPI flash:
 
 ```
-dfu-util --device 1fc9:000c --download --reset
+dfu-util --device 1fc9:000c --download hackrf_one_usb.dfu --reset
 hackrf_spiflash -w hackrf-blinky.bin
 ```
 
-...and then resetting the HackRF.
+Reset the HackRF and it will run the binary you just flashed.
 
 ## License
 
